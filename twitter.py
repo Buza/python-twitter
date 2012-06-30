@@ -87,9 +87,9 @@ class TwitterError(Exception):
 
 class Status(object):
   '''A class representing the Status structure used by the twitter API.
-  
+
   The Status structure exposes the following properties:
-  
+
     status.created_at
     status.created_at_in_seconds # read only
     status.favorited
@@ -591,7 +591,7 @@ class Status(object):
     if self.urls:
       data['urls'] = dict([(url.url, url.expanded_url) for url in self.urls])
     if self.user_mentions:
-      data['user_mentions'] = [um.AsDict() for um in self.user_mentions]                                                                                                                                       
+      data['user_mentions'] = [um.AsDict() for um in self.user_mentions]
     return data
 
   @staticmethod
@@ -1372,9 +1372,9 @@ class User(object):
 
 class List(object):
   '''A class representing the List structure used by the twitter API.
-  
+
   The List structure exposes the following properties:
-  
+
     list.id
     list.name
     list.slug
@@ -1731,9 +1731,9 @@ class List(object):
 
 class DirectMessage(object):
   '''A class representing the DirectMessage structure used by the twitter API.
-  
+
   The DirectMessage structure exposes the following properties:
-  
+
     direct_message.id
     direct_message.created_at
     direct_message.created_at_in_seconds # read only
@@ -3027,8 +3027,6 @@ class Api(object):
     url = '%s/followers/ids.json' % self.base_url
     parameters = {}
     parameters['cursor'] = cursor
-    if userid:
-      parameters['user_id'] = userid
     json = self._FetchUrl(url, parameters=parameters)
     data = self._ParseAndCheckTwitter(json)
     return data
